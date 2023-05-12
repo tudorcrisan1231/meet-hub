@@ -1,14 +1,18 @@
-
 :root {
     --main: #0000;
+    --bg-color: #222327;
+    --orange: #ff6f26;
+    --purple: #5e34b2;
+    --yellow: #ffa827;
 }
-  
 
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background-color: var(--bg-color);
 }
+
 @media screen and (max-width: 75em) {
     html {
         font-size: 56.25%;
@@ -31,12 +35,12 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
     line-height: 1.7;
     overflow-x: hidden;
     box-sizing: border-box;
-    background-color: #F3F5F9;
+    background-color: var(--bg-color);
 }
 
 * {
@@ -50,6 +54,102 @@ body {
     box-sizing: inherit;
 }
 
+.logo {
+    font-size: 24px;
+    background: linear-gradient(to right, #ff6f26, #5e34b2, #ffa827);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-left: 40px;
+    margin-top: 6vh;
+}
 
+/* LOGIN CSS */
+.main-container {
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #808080;
+    height: 100vh;
+    border-radius: 15px;
+}
+.cotainer-login {
+    height: 60vh;
+    margin-top: 14vh;
+    margin-bottom: 20vh;
+}
+.title-login {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+}
+.form-login {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register-login {
+    display: flex;
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.input-login {
+    background-color: var(--bg-color);
+    margin: 20px;
+    width: 300px;
+    color: white;
+    /* border: 2px solid white; */
+    height: 4.7vh;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    font-family: "Poppins", sans-serif;
+    padding: 10px;
+}
+input[type="text"]:hover {
+    border: 1px solid var(--orange);
+    transition: 1s ease;
+}
+input[type="password"]:hover {
+    border: 1px solid var(--orange);
+    transition: 1s ease;
+}
+.checkbox {
+    display: flex;
+    align-items: center;
+    text-indent: 2.5rem;
+    color: white;
+    margin-top: 2vh;
+    font-size: 1.5rem;
+}
+.button-login {
+    width: 13rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    margin-top: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-left: 2.5rem;
+}
+.already-an-account {
+    color: white;
+}
+/* LOGIN CSS END */
 
+/* MEDIA QUERY */
 
+@media only screen and (max-width: 500px) {
+    .login-container {
+        border: none;
+    }
+}
+
+/* MEDIA QUERY END*/
