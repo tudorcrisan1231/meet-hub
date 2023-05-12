@@ -1,5 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-    <div>aici vine html ul</div>
+    <div>{{auth()->user()->name}}</div>
+    <a class="nav-link" href="{{ route('signout') }}">Logout</a
 @endsection
