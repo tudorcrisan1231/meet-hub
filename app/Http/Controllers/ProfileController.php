@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ProfileController extends Controller
 {
     //
-    public $user;
     public function index()
     {
         if(auth()->user()){
-            $this->user = User::find(auth()->user()->id);
-            return view('home', ['user' => $this->user]);
+            return view('profile');
         } else {
             return redirect()->to('login')->with('error','You must login first.');
         }

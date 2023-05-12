@@ -49,7 +49,7 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
          
-        return redirect("")->withSuccess('You have signed-in');
+        return redirect()->route('home')->withSuccess('You have signed-in');
     }
 
     public function create(array $data)
@@ -64,7 +64,7 @@ class CustomAuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('home');
+            return redirect()->route('home');
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');

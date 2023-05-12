@@ -1,9 +1,34 @@
 @extends('layouts.main')
 
 @section('content')
-    <div>{{auth()->user()->name}}</div>
-    <a class="nav-link" href="{{ route('signout') }}">Logout</a>
-    <div id="map" style="height: 380px"></div>
+<div class="main-container" style="position: relative;">
+    <div id="map" style="height: 100%;"></div>
+    
+    <a href="{{route('profile')}}" class="profile_btn">
+        @if($user->photo)
+            <img src="{{asset('storage/'.$user->photo)}}" alt="logo">
+        @else
+            <img src="https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg" alt="logo">
+        @endif
+        
+    </a>
+</div>
+    <style>
+        .profile_btn{
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            z-index: 999;
+        }
+        .profile_btn img{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
 
     <script>
         function getCurrentCoordinates() {
