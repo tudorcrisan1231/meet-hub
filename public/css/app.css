@@ -60,6 +60,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     padding-left: 40px;
+    /* text-align: center; */
     margin-top: 6vh;
 }
 
@@ -71,13 +72,14 @@ body {
     border: 1px solid #808080;
     height: 100vh;
     border-radius: 15px;
+    overflow: hidden;
 }
 .cotainer-login {
     height: 60vh;
     margin-top: 14vh;
     margin-bottom: 20vh;
 }
-.title-login {
+.register-login-title {
     color: white;
     text-align: center;
     font-size: 40px;
@@ -91,10 +93,10 @@ body {
 .register-login {
     display: flex;
     justify-self: center;
-    margin-left: auto;
-    margin-right: auto;
+    color: var(--yellow);
+    font-size: 14px;
 }
-.input-login {
+.input {
     background-color: var(--bg-color);
     margin: 20px;
     width: 300px;
@@ -121,14 +123,17 @@ input[type="password"]:hover {
     align-items: center;
     text-indent: 2.5rem;
     color: white;
-    margin-top: 2vh;
-    font-size: 1.5rem;
+    margin-top: 4vh;
+    font-size: 1.7rem;
 }
-.button-login {
-    width: 13rem;
+.check {
+    background-color: var(--orange);
+}
+.button_login_register {
+    width: 300px;
     font-family: "Poppins", sans-serif;
     font-size: 2rem;
-    margin-top: 4vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,16 +143,48 @@ input[type="password"]:hover {
     border-radius: 5px;
     padding: 1rem;
     margin-left: 2.5rem;
+    margin-top: 4.5rem;
+    cursor: pointer;
 }
 .already-an-account {
+    width: auto;
+    display: flex;
     color: white;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 4.5vh;
+    font-size: 1.7rem;
+}
+.Terms {
+    color: gray;
+    text-align: center;
+    margin-bottom: 3vh;
+    margin-top: 8vh;
+    font-size: 1.4rem;
+    z-index: 2;
+}
+.Terms > span {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.bubble {
+    height: 12rem;
+    max-width: 448px;
+    z-index: -100;
+    position: absolute;
+    bottom: 0;
 }
 /* LOGIN CSS END */
+
+/* REGISTER CSS */
+
+/* REGISTER CSS END */
 
 /* MEDIA QUERY */
 
 @media only screen and (max-width: 500px) {
-    .login-container {
+    .main-container {
         border: none;
     }
 }
