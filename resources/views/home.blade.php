@@ -13,10 +13,14 @@
     </a>
 
     <div class="card_main">
-        <div class="card_events" >
+        <div class="card_events">
             <div class="title_home">
-            <h1 class="logo_home">MeetHub</h1>
-            <h2 class="local_events">Local events</h2>
+                <h1 class="logo_home">MeetHub</h1>
+                <h2 class="local_events">Local events</h2>
+            </div>
+
+            <div class="search_container">
+                <input type="text" placeholder="Cauta evenimente" onkeyup="search()" id="myInput">
             </div>
         
             @foreach ($events as $event)
@@ -40,6 +44,22 @@
         </div>
     </div>
 </div>
+<style>
+    .search_container input{
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.4rem;
+        font-family: inherit;
+        border-radius: .5rem;
+        outline: none;
+        border: 1px solid #ccc;
+        width: 95%;
+        margin: 1rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
 <script>
     const card_btns_open = document.querySelector('.card_btns_open');
     const sidebar = document.querySelector('.sidebar');
@@ -50,6 +70,28 @@
     sidebar_close.addEventListener('click', () => {
         sidebar.classList.remove('sidebar_active');
     });
+
+    function search() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+       
+        cards_name = document.querySelectorAll(".title_location");
+        cards = document.querySelectorAll(".card-content-search");
+        for (i = 0; i < cards.length; i++) {
+            
+            if (cards_name[i]) {
+                txtValue = cards_name[i].textContent || cards_name[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }       
+        }
+    }
+
+
 
     function getCurrentCoordinates() {
         return new Promise((resolve, reject) => {
@@ -97,7 +139,17 @@
 
             map.setView([lat,lng]);
         @endforeach
-      
+
+        const card_lat = document.querySelectorAll('.card-content-search_lat');
+        const card_long = document.querySelectorAll('.card-content-search_long');
+        const card = document.querySelectorAll('.card-content-search');
+        for(let i = 0; i < card.length; i++){
+            card[i].addEventListener('click', () => {
+                map.setView([card_lat[i].textContent, card_long[i].textContent]);
+            });
+        }
+
+
     }) //in caz ca nu merge locatia o pun eu hardcodata
     .catch((error) => {
         var map = L.map('map').setView([45.7458483, 21.2403663], 13);
@@ -109,8 +161,5 @@
             .bindPopup('Complexul studentilor')
             .openPopup();
     });
-
-
-
 </script>
 @endsection

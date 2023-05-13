@@ -438,11 +438,11 @@ input[type="password"]:focus {
     color: white;
 }
 .leaflet-popup-tip {
-    background-color: #222327;
+    background-color: #222327 !important;
     border: none;
 }
 .leaflet-popup-content-wrapper {
-    background-color: transparent;
+    background-color: transparent !important;
     border: none;
     border-radius: 0;
 }
