@@ -5,7 +5,7 @@
     <div class="cotainer-login">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card">!
+                <div class="card">
                     <h3 class="register-login-title">Welcome 😄</h3>
                     <div class="form-login">
                         <form method="POST" action="{{ route('login.custom') }}">
@@ -47,6 +47,7 @@
         <div>
             <p class="Terms">Read our terms and conditions <span>Click</span></p>
         </div>
+        
     </div>
 </main>
 @endsection

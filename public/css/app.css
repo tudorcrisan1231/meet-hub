@@ -40,7 +40,10 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
     box-sizing: border-box;
-    background-color: var(--bg-color);
+    background-image: url(../images/back.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 * {
@@ -74,6 +77,7 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    background-color: #222327;
 }
 .main_container_fluid {
     max-width: 450px;
@@ -87,6 +91,9 @@ body {
     height: auto;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    background-color: #222327;
+    background-repeat: no-repeat;
 }
 .cotainer-login {
     height: 60vh;
