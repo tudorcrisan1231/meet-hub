@@ -12,8 +12,8 @@
         @endif
     </a>
 
-    <div class="card">
-        <div class="card_events" style="overflow: scroll;">
+    <div class="card_main">
+        <div class="card_events" >
             @foreach ($events as $event)
                 @livewire('event-card', ['event' => $event])
             @endforeach
@@ -83,20 +83,6 @@
     .leaflet-popup-content{
         color: white;
         font-size: 1.4rem;
-    }
-    .card{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 45%;
-        background-color: #fff;
-        border-radius: 1rem 1rem 0 0;
-        z-index: 999;
-
-        display: grid;
-        grid-template-rows: 1fr max-content;
-        gap: .5rem;
     }
     .card_btns{
         display: grid;
