@@ -88,12 +88,22 @@ body {
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #808080;
-    height: auto;
+    height: 100vh;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
     background-color: #222327;
     background-repeat: no-repeat;
+    overflow: scroll;
+}
+.main_container_fluid::-webkit-scrollbar-thumb {
+    background: #222327;
+}
+.main_container_fluid:-webkit-scrollbar {
+    display: none;
+}
+.main_container_fluid::-webkit-scrollbar-track {
+    background: #222327;
 }
 .cotainer-login {
     height: 60vh;
@@ -516,6 +526,7 @@ input[type="password"]:focus {
     margin-top: 3rem;
     text-align: center;
     margin-bottom: 3rem;
+    border-left: 2px solid white;
 }
 .info_event {
     font-size: 16px;
@@ -527,7 +538,7 @@ input[type="password"]:focus {
     color: var(--orange);
 }
 .org {
-    margin-top: 3rem;
+    margin-top: 4rem;
     margin-bottom: 3rem;
 }
 /* EVENT SCREEN END */
@@ -559,3 +570,11 @@ input[type="password"]:focus {
 }
 
 /* MEDIA QUERY END*/
+
+.main_container_fluid::-webkit-scrollbar {
+    display: none;
+}
+.main_container_fluid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
