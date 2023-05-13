@@ -21,12 +21,22 @@
 
     <div>Durata: {{$event->time}} ore</div>
 
-    <div>Limita: {{$event->limit}} persoane</div>
+    @php
+        $locuri_libere = $event->limit - count($participants);
+        if($locuri_libere < 0){
+            $locuri_libere = 0;
+        }
+    @endphp
+    <div>Limita: {{$event->limit}} persoane (locuri libere {{$locuri_libere}})</div>
 
     <div>Tema: {{$event->type}}</div>
 
     <div>Organizator: 
-        <div><img src="{{asset('storage/'.$organizator->photo)}}" alt=""></div>
+        @isset($organizator->photo)
+            <div><img src="{{asset('storage/'.$organizator->photo)}}" alt=""></div>
+        @else
+            <div><img src="{{asset('images/placeholder.png')}}" alt=""></div>
+        @endisset
         <div>{{$organizator->name}}</div>
     </div>
 
@@ -53,9 +63,15 @@
         }
     @endphp
     @if(auth()->user()->id != $organizator->id && !$participate)
-        <div class="button_login_register" wire:click="participate">
-            Participa
-        </div>
+        @if($locuri_libere > 0)
+            <div class="button_login_register" wire:click="participate">
+                Participa
+            </div>
+        @else
+            <div class="button_login_register">
+                Toate locurile sunt ocupate :(
+            </div>
+        @endif
     @else
         <div class="button_login_register" wire:click="unparticipate">
             Nu mai participa
