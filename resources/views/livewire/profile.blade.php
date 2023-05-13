@@ -1,7 +1,10 @@
 <div class="main_container_fluid">
-    <a href="{{route('signout')}}">logout</a>
-    <a href="{{route('home')}}" style="font-size: 3rem;">BACK</a>
-    @if($current_img)
+    <div class="profile_btn-nav">
+    <a href="{{route('home')}}" class="profile_btn-nav_link" id="logout_profile" >BACK</a>
+    <a href="{{route('signout')}}"class="profile_btn-nav_link" >Logout</a>
+    </div>
+    <div class="conteiner_profile">
+   @if($current_img)
         <img class="profile_img_profile" src="{{asset('storage/'.$current_img)}}" alt="logo">
     @else
         <img src="https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg" alt="logo">
@@ -36,15 +39,16 @@
         </select>
     </div>
 
-    <div>
-        <label for="profile_address">Actualizeaza adresa</label>
-        <input type="text" id="profile_address" wire:model="profile_address" class="input-login">
+    <div class="profile_group_label">
+        <label class="profile_text" for="profile_address">Actualizeaza adresa</label>
+        <input type="text" id="profile_address" wire:model="profile_address" class="input">
     </div>
 
-    <div>
-        <label for="profile_about">Actualizeaza descrierea ta</label>
-        <textarea name="" id="profile_about" cols="30" rows="10" wire:model="profile_about" class="input-login"></textarea>
+    <div class="profile_group_label">
+        <label class="profile_text" for="profile_about">Actualizeaza descrierea ta</label>
+        <textarea name="" id="profile_about" cols="30" rows="20" wire:model="profile_about" class="input select"></textarea>
     </div>
 
-    <div wire:click="saveProfile" class="button-login">Actualizeaza profil</div>
+    <div class="mod_profile_btn" wire:click="saveProfile" class="button-login">Actualizeaza profil</div>
+    </div>
 </div>

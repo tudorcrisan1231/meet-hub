@@ -73,6 +73,7 @@ body {
     height: 100vh;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
 .main_container_fluid {
     max-width: 450px;
@@ -131,6 +132,15 @@ input[type="password"]:hover {
     border: 1px solid var(--orange);
     transition: 1s ease;
 }
+input[type="text"]:focus {
+    outline: 1px solid var(--orange) !important;
+}
+input[type="password"]:focus {
+    outline: 1px solid var(--orange) !important;
+}
+.select:focus {
+    outline: 1px solid var(--orange) !important;
+}
 .checkbox {
     display: flex;
     align-items: center;
@@ -188,7 +198,11 @@ input[type="password"]:hover {
     position: absolute;
     bottom: 0;
 }
-
+.text-danger {
+    text-indent: 2.5rem;
+    font-size: 15px;
+    color: red;
+}
 /* LOGIN CSS END */
 
 /* REGISTER CSS */
@@ -196,19 +210,95 @@ input[type="password"]:hover {
 /* REGISTER CSS END */
 
 /* PROFILE PAGE CSS */
+.profile_btn-nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 4rem;
+}
+.profile_btn-nav_link {
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-left: 2.5rem;
+    margin-top: 4.5rem;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 1.2rem;
+    text-decoration: none;
+}
+.profile_btn-nav_link:visited {
+    color: white;
+}
+.conteiner_profile {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 .profile_img_profile {
     width: 200px;
     height: 200px;
     border-radius: 100%;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+#logout_profile:visited {
+    background-color: var(--orange);
 }
 .profile_text {
     color: white;
+    font-family: "Poppins", sans-serif;
+    text-indent: 3rem;
+    font-size: 15px;
 }
 .profile_group_label {
     display: flex;
     flex-direction: column;
+    margin-top: 4rem;
+}
+.Terms_register {
+    color: gray;
+    text-align: center;
+    margin-bottom: 3vh;
+    margin-top: 4vh;
+    font-size: 1.4rem;
+    z-index: 2;
+}
+.Terms_register > span {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.mod_profile_btn {
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 4rem;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+.profile_img {
+    border: 1px solid red;
 }
 /* PROFILE PAGE CSS END */
 

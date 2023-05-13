@@ -14,21 +14,21 @@
                                 <input type="text" placeholder="Name" id="name" class="input" name="name"
                                     required autofocus>
                                 @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                <div class="text-danger">{{ $errors->first('name') }}</div>
                                 @endif
                             </div>
                             <div class="form-group mb-3">
                                 <input type="text" placeholder="Email" id="email_address" class="input"
                                     name="email" required autofocus>
                                 @if ($errors->has('email'))
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                <div class="text-danger">{{ $errors->first('email') }}</div>
                                 @endif
                             </div>
                             <div class="form-group mb-3">
                                 <input type="password" placeholder="Password" id="password"  class="input"
                                     name="password" required>
                                 @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                                <div class="text-danger">{{ $errors->first('password') }}</div>
                                 @endif
                             </div>
                             <div class="form-group mb-3">
@@ -53,7 +53,7 @@
         <a class="register-login" href="{{route('login')}}">LOGIN</a>
         </div>
         <div>
-            <p class="Terms">Read our terms and conditions <span>Click</span></p>
+            <p class="Terms_register">Read our terms and conditions <span>Click</span></p>
         </div>
     </div>
     </div>
