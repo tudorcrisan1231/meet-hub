@@ -108,7 +108,25 @@ body {
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
     background-color: #222327;
     background-repeat: no-repeat;
-    overflow: scroll;
+    overflow: auto;
+}
+.card_content_my_events_MAIN {
+    max-width: 450px;
+    position: relative;
+
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #808080;
+    height: max-content;
+    min-height: 98%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    background-color: #222327;
+    background-repeat: no-repeat;
+    overflow: auto;
 }
 .main_container_fluid::-webkit-scrollbar-thumb {
     background: #222327;
@@ -118,6 +136,15 @@ body {
 }
 .main_container_fluid::-webkit-scrollbar-track {
     background: #222327;
+}
+.card_content_my_events_MAIN::-webkit-scrollbar-thumb {
+    background: #222327 !important;
+}
+.card_content_my_events_MAIN:-webkit-scrollbar {
+    display: none !important;
+}
+.card_content_my_events_MAIN::-webkit-scrollbar-track {
+    background: #222327 !important;
 }
 .cotainer-login {
     height: 60vh;
@@ -387,6 +414,7 @@ input[type="password"]:focus {
 }
 .card-content {
     max-width: 95%;
+    min-width: 95%;
     color: white;
     display: flex;
     align-items: center;
@@ -408,16 +436,42 @@ input[type="password"]:focus {
     backdrop-filter: blur(20px);
     cursor: pointer;
 }
+.card_content_my_events {
+    max-width: 95%;
+    min-width: 95%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    border-radius: 5px;
+    padding-top: 2rem;
+    /* height: 8rem; */
+    background: linear-gradient(
+        179.29deg,
+        rgba(34, 35, 39, 0.62) -6.18%,
+        rgba(34, 35, 39, 0.3) 82.82%
+    );
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+}
 .div_location {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.div_location > svg {
+    color: var(--yellow);
+}
 .date_location {
     font-size: 15px;
     margin-left: 1rem;
     margin-right: 1rem;
+    color: white;
 }
 .icon_location {
     margin-left: -1rem;
@@ -425,6 +479,7 @@ input[type="password"]:focus {
 .title_location {
     margin-left: 1rem;
     margin-right: 1rem;
+    color: white;
 }
 /*NAVBAR*/
 .sidebar {
@@ -541,6 +596,7 @@ input[type="password"]:focus {
     text-align: center;
     margin-bottom: 3rem;
     border-left: 2px solid white;
+    color: white;
 }
 .info_event {
     font-size: 16px;
@@ -559,13 +615,21 @@ input[type="password"]:focus {
     padding: 1rem;
     border-radius: 10px;
     padding-left: 2rem;
+    color: white !important;
 }
 .info_dim {
-    color: var(--orange);
+    color: var(--orange) !important;
 }
 .org {
     display: flex;
     align-items: center;
+}
+.my_events_list_element {
+    margin-bottom: 4rem;
+}
+.my_events_title {
+    color: white;
+    font-size: 20px;
 }
 /* EVENT SCREEN END */
 
