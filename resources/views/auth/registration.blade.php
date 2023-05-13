@@ -23,7 +23,14 @@
                                 @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @endif
-                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <input type="password" placeholder="Password" id="password"  class="input"
+                                    name="password" required>
+                                @if ($errors->has('password'))
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
+                            </div>
                             <div class="form-group mb-3">
                                 <div class="checkbox">
                                 
