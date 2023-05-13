@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="main-container" style="position: relative;">
-    <div id="map" style="height: 100%;"></div>
+    <div id="map" style="height: 105%;"></div>
     
     <a href="{{route('profile')}}" class="profile_btn">
         @if($user->photo)
@@ -13,8 +13,10 @@
     </a>
 
     <div class="card">
-        <div class="card_events">
-
+        <div class="card_events" style="overflow: scroll;">
+            @foreach ($events as $event)
+                @livewire('event-card', ['event' => $event])
+            @endforeach
         </div>
         <div class="card_btns">
             <div class="card_btns_btn button_login_register"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.713-.288T3 17q0-.425.288-.713T4 16h16q.425 0 .713.288T21 17q0 .425-.288.713T20 18H4Zm0-5q-.425 0-.713-.288T3 12q0-.425.288-.713T4 11h16q.425 0 .713.288T21 12q0 .425-.288.713T20 13H4Zm0-5q-.425 0-.713-.288T3 7q0-.425.288-.713T4 6h16q.425 0 .713.288T21 7q0 .425-.288.713T20 8H4Z"/></svg></div>

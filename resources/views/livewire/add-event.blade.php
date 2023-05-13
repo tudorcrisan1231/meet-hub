@@ -1,10 +1,7 @@
 <div class="" style="padding-bottom: 5rem;">
     <div class="register-login-title">Creaza un eveniment</div>
 
-    <div class="profile_group_label">
-        <label class="profile_text" for="event_img">Imaginea principala</label>
-        <input type="file" id="event_img" wire:model="event_img" class="input">
-    </div>
+
 
     <div class="profile_group_label">
         <label class="profile_text" for="event_name">Numele eventului</label>
@@ -14,6 +11,11 @@
     <div>
         <label for="event_description">descrierea ta</label>
         <textarea name="" id="event_description" cols="30" rows="10" wire:model="event_description" class="input-login"></textarea>
+    </div>
+
+    <div class="profile_group_label">
+        <label class="profile_text" for="event_theme">Tematica</label>
+        <input type="text" id="event_theme" wire:model="event_theme" class="input">
     </div>
 
     <div class="profile_group_label">
@@ -32,8 +34,18 @@
         <input type="number" id="event_limit" wire:model="event_limit" class="input">
     </div>
 
+    <div class="profile_group_label">
+        <label class="profile_text" for="event_img">Imaginea principala</label>
+        <input type="file" id="event_img" wire:model="event_img" class="input">
+    </div>
+
     <label class="profile_text">Selecteaza locatia</label>
     <div id="map" style="height: 50rem; width:100%"></div>
+
+
+    <div class="button_login_register" wire:click="addEvent">
+        Adauga event
+    </div>
 
     <script>
         function getCurrentCoordinates() {
@@ -68,6 +80,10 @@
             marker = L.marker([latitude, longitude]).addTo(map)
                 .bindPopup('Locatia ta')
                 .openPopup();
+            
+            //save coordinates in cookie
+            document.cookie = "lat=" + latitude;
+            document.cookie = "lng=" + longitude;
 
             //add onclick on map
             map.on('click', function(e) {
@@ -75,12 +91,17 @@
                 var lat = coord.lat;
                 var lng = coord.lng;
                 console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
-                //remove old marker
-                map.removeLayer(marker);
-                L.marker([lat, lng]).addTo(map)
+
+                marker.remove();
+
+                marker = L.marker([lat, lng]).addTo(map)
                 .bindPopup('Locatia ta')
                 .openPopup();
                 map.setView([lat,lng]);
+
+                //save coordinates in cookie
+                document.cookie = "lat=" + lat;
+                document.cookie = "lng=" + lng;
             });
 
         }) //in caz ca nu merge locatia o pun eu hardcodata
