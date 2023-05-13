@@ -4,6 +4,7 @@ use App\Http\Controllers\AddEventController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\EventPageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MyEventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -32,3 +33,6 @@ Route::get('profile', [ProfileController::class, 'index'])->name('profile');
 
 Route::get('add-event', [AddEventController::class, 'index'])->name('add_event');
 Route::get('event/{id}', [EventPageController::class, 'index'])->name('event_page.{id}');
+
+
+Route::get('my-events', [MyEventController::class, 'index'])->name('my_events');

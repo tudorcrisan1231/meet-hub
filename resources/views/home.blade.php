@@ -40,7 +40,7 @@
         </div>
         <div class="sidebar_links">
             <a href="{{route('profile')}}">My profile</a>
-            <a href="#">My events</a>
+            <a href="{{route('my_events')}}">My events</a>
         </div>
  
         <div class="sidebar_close">
