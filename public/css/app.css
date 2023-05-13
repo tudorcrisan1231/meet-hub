@@ -358,6 +358,7 @@ input[type="password"]:focus {
     margin-right: auto;
     margin-top: 2rem;
     border-radius: 5px;
+    padding-top: 2rem;
     /* height: 8rem; */
     background: linear-gradient(
         179.29deg,

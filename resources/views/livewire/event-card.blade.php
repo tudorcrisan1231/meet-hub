@@ -11,6 +11,6 @@
    
 </div>
 <div class="date_location">
-<a href="/event/{{$event->id}}">Details</a>
+<a class="profile_btn-nav_link" href="/event/{{$event->id}}">Details</a>
 </div>
 </div>
