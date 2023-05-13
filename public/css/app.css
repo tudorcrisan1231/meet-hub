@@ -333,6 +333,10 @@ input[type="password"]:focus {
 @media only screen and (max-width: 500px) {
     .main-container {
         border: none;
+        border-radius: 0 !important;
+    }
+    .main_container_fluid {
+        border-radius: 0 !important;
     }
 }
 
