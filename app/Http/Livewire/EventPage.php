@@ -2,16 +2,25 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Chat;
 use App\Models\Event;
 use App\Models\User;
 use Livewire\Component;
 
 class EventPage extends Component
 {
-    public $event_id, $event, $geo_location, $organizator, $participants;
+    public $event_id, $event, $geo_location, $organizator, $participants, $openChat = 0, $chat_message, $chats;
 
     public function render()
     {
+        return view('livewire.event-page');
+    }
+
+    public function mount(){
+        $this->getStartData();
+    }
+
+    public function getStartData(){
         $this->event = Event::find($this->event_id);
         $this->organizator = User::find($this->event->organizer);
         $this->participants = User::whereIn('id', json_decode($this->event->users))->get();
@@ -24,8 +33,6 @@ class EventPage extends Component
         $response = file_get_contents($url);
         $result = json_decode($response, true);
         $this->geo_location = $result['results'][0]['formatted'];
-
-        return view('livewire.event-page');
     }
 
     public function participate(){
@@ -44,5 +51,25 @@ class EventPage extends Component
         $event->users = json_encode($users);
         $event->save();
         return redirect()->to('/event/'.$this->event_id);
+    }
+
+
+    public function openChat(){
+        $this->openChat = 1;
+        $this->chats = Chat::where('event_id', $this->event_id)->where('status', '!=', 2)->get();
+    }
+    public function closeChat(){
+        $this->openChat = 0;
+    }
+
+    public function sendMessage(){
+        $chat = new Chat;
+        $chat->sender_id = auth()->user()->id;
+        $chat->event_id = $this->event_id;
+        $chat->message = $this->chat_message;
+        $chat->save();
+        $this->chat_message = "";
+
+        $this->chats = Chat::where('event_id', $this->event_id)->where('status', '!=', 2)->get();
     }
 }

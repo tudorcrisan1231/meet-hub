@@ -1,4 +1,4 @@
-<div style="font-size: 1.6rem; color:white;">
+<div style="font-size: 1.6rem; color:white; position:relative;">
     @if($event->image)
         <img src="{{asset('storage/'.$event->image)}}" alt="" style="width: 100%;">
     @else
@@ -33,11 +33,11 @@
     <div>Participanti: 
         <div>
             @foreach ($participants as $participant)
-                @if($participant->photo)
+                @isset($participant->photo)
                     <div><img width="200" src="{{asset('storage/'.$participant->photo)}}" alt=""></div>
                 @else
-                    <div><img width="200" src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" alt=""></div>
-                @endif
+                    <div><img width="200" src="{{asset('images/placeholder.png')}}" alt=""></div>
+                @endisset
                 
                 <div>nume: {{$participant->name}}</div>
             @endforeach
@@ -64,4 +64,53 @@
             Open chat
         </div>
     @endif
+
+    @if($openChat)
+        <div class="card_main" style="position: fixed;">
+            <div class="card_events" >
+                @foreach ($chats as $chat)
+                    @php
+                        $user = \App\Models\User::find($chat->sender_id);
+                    @endphp
+                    <div style="display: flex; flex-direction:column;" class="@if($chat->sender_id == auth()->user()->id) chat_right @else chat_left @endif">
+                        <div>
+                            @isset($user->photo)
+                                <img src="{{asset('storage/'.$user->photo)}}" alt="">
+                            @else
+                                <img src="{{asset('images/placeholder.png')}}" alt="">
+                            @endisset
+                           
+                            <div>{{$user->name}}</div>
+                        </div>
+                        <div>
+                            {{$chat->message}}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="card_btns">
+                <input type="text" placeholder="Mesajul tau" wire:model="chat_message">
+                <div class="button_login_register" wire:click="sendMessage">
+                    Trimite
+                </div>
+            </div>
+
+            <div class="button_login_register" wire:click="closeChat">
+                inchide chat
+            </div>
+        </div>
+    @endif
+
+    <style>
+        .chat_right{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .chat_left{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
 </div>
