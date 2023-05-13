@@ -676,9 +676,6 @@ input[type="password"]:focus {
         background: #222327;
     }
 }
-input {
-    background-color: #ff6f26;
-}
 
 /* MEDIA QUERY END*/
 
