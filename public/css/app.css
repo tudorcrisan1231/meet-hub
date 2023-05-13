@@ -40,7 +40,7 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
     box-sizing: border-box;
-    background-image: url(../images/back.png);
+    background-image: url(../images/banner.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -494,6 +494,43 @@ input[type="password"]:focus {
 }
 /*NAVBAR END*/
 /* CARD CSS END */
+
+/* EVENT SCREEN */
+
+.img_banner {
+    width: 100%;
+}
+.img_banner_prof {
+    width: 20rem;
+    border-radius: 100%;
+}
+.img_part {
+    width: 20rem;
+    border-radius: 100%;
+}
+.info_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.info_event {
+    font-size: 16px;
+    width: 80%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.info_dim {
+    color: var(--orange);
+}
+.org {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+/* EVENT SCREEN END */
 
 /* MEDIA QUERY */
 
