@@ -14,6 +14,11 @@
 
     <div class="card_main">
         <div class="card_events" >
+            <div class="title_home">
+            <h1 class="logo_home">MeetHub</h1>
+            <h2 class="local_events">Local events</h2>
+            </div>
+        
             @foreach ($events as $event)
                 @livewire('event-card', ['event' => $event])
             @endforeach
@@ -35,80 +40,6 @@
         </div>
     </div>
 </div>
-<style>
-    .sidebar{
-        position: fixed;
-        background-color: white;
-        top: 0;
-        left: -100%;
-        width: 40%;
-        height: 100%;
-        z-index: 999;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-right: 1px solid #ccc;
-        transition: all .2s;
-    }
-    .sidebar_active{
-        left: 0;
-    }
-    .sidebar_close{
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-    }
-    .sidebar_close svg{
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-    }
-    .cur-popup{
-        background-color: #222327;
-        border-radius: 5px;
-        color: white;
-    }
-    .leaflet-popup-tip{
-        background-color: #222327;
-        border: none;
-       
-    }
-    .leaflet-popup-content-wrapper{
-        background-color: transparent;
-        border: none;
-        border-radius: 0;
-    }
-    .leaflet-popup-content{
-        color: white;
-        font-size: 1.4rem;
-    }
-    .card_btns{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: .5rem;
-    }
-    .card_btns_btn{
-        width: 100%;
-        margin: 0;
-    }
-    .profile_btn{
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        width: 50px;
-        height: 50px;
-        z-index: 999;
-    }
-    .profile_btn img{
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-</style>
-
 <script>
     const card_btns_open = document.querySelector('.card_btns_open');
     const sidebar = document.querySelector('.sidebar');
