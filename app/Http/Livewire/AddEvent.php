@@ -27,6 +27,8 @@ class AddEvent extends Component
         $event->status = 0;
         $event->type = $this->event_theme;
         $event->limit = $this->event_limit;
+        $event->organizer = auth()->user()->id;
+        $event->hour = "12:00";
         $event->save();
 
         $this->event_img = "";
