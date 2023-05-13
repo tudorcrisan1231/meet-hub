@@ -65,7 +65,7 @@
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            L.marker([latitude, longitude]).addTo(map)
+            marker = L.marker([latitude, longitude]).addTo(map)
                 .bindPopup('Locatia ta')
                 .openPopup();
 
@@ -75,6 +75,12 @@
                 var lat = coord.lat;
                 var lng = coord.lng;
                 console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+                //remove old marker
+                map.removeLayer(marker);
+                L.marker([lat, lng]).addTo(map)
+                .bindPopup('Locatia ta')
+                .openPopup();
+                map.setView([lat,lng]);
             });
 
         }) //in caz ca nu merge locatia o pun eu hardcodata
