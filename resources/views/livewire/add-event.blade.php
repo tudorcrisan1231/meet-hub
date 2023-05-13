@@ -75,14 +75,20 @@
             const latitude = coordinates.latitude;
             const longitude = coordinates.longitude;
 
-            var map = L.map('map').setView([latitude, longitude], 13);
+            var map = L.map('map').setView([latitude, longitude], 14);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
             marker = L.marker([latitude, longitude]).addTo(map)
-                .bindPopup('Locatia ta')
-                .openPopup();
+            .bindPopup(L.popup({
+                autoClose:false,
+                closeOnClick: false,
+                className: 'cur-popup',
+            })
+            )
+            .setPopupContent('<div class="cur-popup"><h3>Locatia aleasa</h3></div>')
+            .openPopup();
             
             //save coordinates in cookie
             document.cookie = "lat=" + latitude;
@@ -98,7 +104,13 @@
                 marker.remove();
 
                 marker = L.marker([lat, lng]).addTo(map)
-                .bindPopup('Locatia ta')
+                .bindPopup(L.popup({
+                    autoClose:false,
+                    closeOnClick: false,
+                    className: 'cur-popup',
+                })
+                )
+                .setPopupContent('<div class="cur-popup"><h3>Locatia aleasa</h3></div>')
                 .openPopup();
                 map.setView([lat,lng]);
 
