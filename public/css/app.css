@@ -104,6 +104,7 @@ body {
     color: white;
     text-align: center;
     font-size: 40px;
+    font-family: "Poppins", sans-serif;
 }
 .form-login {
     margin-top: 10vh;
@@ -120,6 +121,7 @@ body {
 .input {
     background-color: var(--bg-color);
     margin: 20px;
+    margin-top: 10px;
     width: 300px;
     color: white;
     /* border: 2px solid white; */
@@ -227,7 +229,7 @@ input[type="password"]:focus {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 4rem;
 }
 .profile_btn-nav_link {
@@ -314,6 +316,17 @@ input[type="password"]:focus {
     border: 1px solid red;
 }
 /* PROFILE PAGE CSS END */
+
+/* CREATE EVENT CSS */
+.create_title {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    font-family: "Poppins", sans-serif;
+    border: 2px solid var(--purple);
+    padding: 1rem;
+}
+/* CREATE EVENT CSS END */
 
 /* MEDIA QUERY */
 
