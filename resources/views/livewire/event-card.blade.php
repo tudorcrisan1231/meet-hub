@@ -1,5 +1,5 @@
 <div>
-   <div>Nume:{{$event->name}}</div>
+   <a href="/event/{{$event->id}}">Nume:{{$event->name}}</a>
    <img src="{{asset('storage/'.$event->image)}}" alt="" style="width: 100px;">
    <div>{{$event->description}}</div>
    <div>{{$event->date}}</div>
