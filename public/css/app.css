@@ -99,7 +99,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #808080;
-    height: 98%;
+    height: max-content;
+    min-height: 98%;
     margin-top: auto;
     margin-bottom: auto;
     border-radius: 15px;
