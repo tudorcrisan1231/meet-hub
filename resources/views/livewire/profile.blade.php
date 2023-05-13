@@ -1,5 +1,6 @@
 <div class="main_container_fluid">
     <a href="{{route('signout')}}">logout</a>
+    <a href="{{route('home')}}" style="font-size: 3rem;">BACK</a>
     @if($current_img)
         <img class="profile_img_profile" src="{{asset('storage/'.$current_img)}}" alt="logo">
     @else
