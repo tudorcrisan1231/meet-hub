@@ -45,7 +45,7 @@
             <div><span class="info_dim">{{$organizator->name}}</span></div>
         </div>
 
-        <div>Participanti: 
+        <div >Participanti: 
             <div class="info_event org">
                 @foreach ($participants as $participant)
                     @isset($participant->photo)
