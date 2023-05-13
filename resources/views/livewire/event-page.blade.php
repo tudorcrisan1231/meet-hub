@@ -36,25 +36,35 @@
 
         <div class="info_event">Tema: <span class="info_dim">{{$event->type}}</span></div>
 
-        <div class="info_event org">Organizator: 
-            @isset($organizator->photo)
-                <div><img class="img_banner_prof" src="{{asset('storage/'.$organizator->photo)}}" alt=""></div>
-            @else
-                <div><img class="img_banner_prof" src="{{asset('images/placeholder.png')}}" alt=""></div>
-            @endisset
-            <div><span class="info_dim">{{$organizator->name}}</span></div>
-        </div>
 
-        <div >Participanti: 
-            <div class="info_event org">
-                @foreach ($participants as $participant)
-                    @isset($participant->photo)
-                        <div><img class="img_part" src="{{asset('storage/'.$participant->photo)}}" alt=""></div>
+        <div class="info_event">Organizator: 
+            <div class="participanti">
+                
+                <a href="/profile" class="participanti_item">
+                    @isset($organizator->photo)
+                        <img class="img_banner_prof" src="{{asset('storage/'.$organizator->photo)}}" alt="">
                     @else
-                        <div><img width="200" src="{{asset('images/placeholder.png')}}" alt=""></div>
+                        <img class="img_banner_prof" src="{{asset('images/placeholder.png')}}" alt="">
                     @endisset
                     
-                    <div>nume: <span class="info_dim">{{$participant->name}}</span></div>
+                    <div><span class="info_dim">{{$organizator->name}}</span></div>
+                </a>
+             
+            </div>
+        </div>
+
+        <div class="info_event">Participanti: 
+            <div class="participanti">
+                @foreach ($participants as $participant)
+                    <a href="/profile" class="participanti_item">
+                        @isset($participant->photo)
+                           <img class="img_part" src="{{asset('storage/'.$participant->photo)}}" alt="">
+                        @else
+                           <img width="200" src="{{asset('images/placeholder.png')}}" alt="">
+                        @endisset
+                        
+                        <div><span class="info_dim">{{$participant->name}}</span></div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -69,34 +79,37 @@
                 }
             }
         @endphp
-        @if(auth()->user()->id != $organizator->id && !$participate)
-            @if($locuri_libere > 0)
-                <div class="button_login_register" wire:click="participate">
-                    Participa
-                </div>
+        <div class="event_btns">
+            @if(auth()->user()->id != $organizator->id && !$participate)
+                @if($locuri_libere > 0)
+                    <div class="button_login_register event_paticipa" wire:click="participate">
+                        Participa
+                    </div>
+                @else
+                    <div class="button_login_register event_paticipa">
+                        Toate locurile sunt ocupate :(
+                    </div>
+                @endif
             @else
-                <div class="button_login_register">
-                    Toate locurile sunt ocupate :(
+                <div class="button_login_register" wire:click="unparticipate" style="background-color: var(--orange)">
+                    Nu mai participa
+                </div>
+                <div class="button_login_register" wire:click="openChat">
+                    Open chat
                 </div>
             @endif
-        @else
-            <div class="button_login_register" wire:click="unparticipate">
-                Nu mai participa
-            </div>
-            <div class="button_login_register" wire:click="openChat">
-                Open chat
-            </div>
-        @endif
+        </div>
+
 
         @if($openChat)
-            <div class="card_main" style="position: fixed;">
-                <div class="card_events" >
+            <div class="card_main card_chats" style="position: fixed;">
+                <div class="card_events card_chats_container" >
                     @foreach ($chats as $chat)
                         @php
                             $user = \App\Models\User::find($chat->sender_id);
                         @endphp
-                        <div style="display: flex; flex-direction:column;" class="@if($chat->sender_id == auth()->user()->id) chat_right @else chat_left @endif">
-                            <div>
+                        <div class="chat @if($chat->sender_id == auth()->user()->id) chat_right @else chat_left @endif">
+                            <div class="chat_user">
                                 @isset($user->photo)
                                     <img src="{{asset('storage/'.$user->photo)}}" alt="">
                                 @else
@@ -111,24 +124,115 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="card_btns">
-                    <input type="text" placeholder="Mesajul tau" wire:model="chat_message">
-                    <div class="button_login_register" wire:click="sendMessage">
-                        Trimite
+                <div class="chat_btns">
+                    <div class="button_login_register" wire:click="closeChat">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m12 13.4l-4.9 4.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l4.9-4.9l-4.9-4.9q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l4.9 4.9l4.9-4.9q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7L13.4 12l4.9 4.9q.275.275.275.7t-.275.7q-.275.275-.7.275t-.7-.275L12 13.4Z"/></svg>
                     </div>
-                </div>
-
-                <div class="button_login_register" wire:click="closeChat">
-                    inchide chat
+                    <input type="text" class="chat_btns_input" placeholder="Mesajul tau" wire:model="chat_message">
+                    <div class="button_login_register" wire:click="sendMessage">
+                        <div>Trimite</div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"><path fill="currentColor" d="M0 2v8.5L15 13L0 15.5V24l26-11L0 2z"/></svg>
+                    </div>
+                    
                 </div>
             </div>
         @endif
 
         <style>
+            .event_paticipa{
+                grid-column: 1/-1;
+            }
+            .event_btns{
+                display: grid;
+                grid-template-columns: 30% 1fr;
+                gap: 1rem;
+                width: 100%;
+                padding: 1rem 2.5%;
+            }
+            .event_btns>*{
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+            .info_cont{
+                border-left: none;
+            }
+            .participanti{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            .participanti_item{
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+                text-decoration: none;
+            }
+            .participanti_item img{
+                width: 2.5rem;
+                height: 2.5rem;
+                border-radius: 50%;
+            }
+            .card_chats{
+                
+                height: 65%;
+            }
+            .card_chats_container{
+                padding: 1rem 2.5%;
+            }
+            .chat_btns_input{
+                width: 100%;
+                border-radius: 5px;
+                border: 1px solid #000;
+                padding: 5px;
+                font-size: 1.6rem;
+                font-family: inherit;
+                height: 100%;
+            }
+            .chat_btns{
+                display: grid;
+                grid-template-columns:  max-content 1fr  max-content;
+                align-items: center;
+                gap: 10px;
+                padding: .5rem 0;
+                border-top: 1px solid rgba(255,255,255,.3);
+                padding: 1rem 2.5%;
+            }
+            .chat_btns .button_login_register{
+                width: max-content !important;
+                height: 100%;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: .5rem;
+            }
+            .chat_btns .button_login_register svg{
+                width: 20px;
+                height: 20px;
+            }
+            .chat{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1.5rem;
+            }
+            .chat_user{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+            .chat_user img{
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+            }
             .chat_right{
                 display: flex;
                 flex-direction: column;
                 align-items: flex-end;
+                text-align: right;
             }
             .chat_left{
                 display: flex;
