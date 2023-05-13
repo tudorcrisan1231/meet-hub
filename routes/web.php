@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddEventController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,5 @@ Route::post('custom-registration', [CustomAuthController::class, 'customRegistra
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+
+Route::get('add-event', [AddEventController::class, 'index'])->name('add_event');
