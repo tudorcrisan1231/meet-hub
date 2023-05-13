@@ -171,9 +171,9 @@ body {
 }
 .input {
     background-color: var(--bg-color);
-    margin: 20px;
+    /* margin: 20px; */
     margin-top: 10px;
-    width: 300px;
+    width: 90% !important;
     color: white;
     /* border: 2px solid white; */
     height: 4.7vh;
@@ -183,6 +183,15 @@ body {
     backdrop-filter: blur(20px);
     font-family: "Poppins", sans-serif;
     padding: 10px;
+}
+input {
+    width: 100% !important;
+}
+input[type="text"] {
+    width: 100% !important;
+}
+input[type="number"] {
+    width: 100% !important;
 }
 input[type="text"]:hover {
     border: 1px solid var(--orange);
@@ -199,7 +208,11 @@ input[type="password"]:focus {
     outline: 1px solid var(--orange) !important;
 }
 .select {
+    width: 100% !important;
     height: 25rem !important;
+}
+.date_e {
+    width: 100% !important;
 }
 .select:focus {
     outline: 1px solid var(--orange) !important;
@@ -326,12 +339,16 @@ input[type="password"]:focus {
     background-color: var(--orange);
 }
 .profile_text {
+    width: max-content;
     color: white;
     font-family: "Poppins", sans-serif;
-    text-indent: 3rem;
+    /* text-indent: 3rem; */
     font-size: 15px;
+    /* border-bottom: 1px solid var(--yellow); */
+    /* color: var(--yellow); */
 }
 .profile_group_label {
+    width: 90%;
     display: flex;
     flex-direction: column;
     margin-top: 4rem;
@@ -373,12 +390,13 @@ input[type="password"]:focus {
 
 /* CREATE EVENT CSS */
 .create_title {
+    width: 90%;
     color: white;
-    text-align: center;
     font-size: 40px;
     font-family: "Poppins", sans-serif;
     border: 2px solid var(--purple);
     padding: 1rem;
+    text-align: center;
 }
 /* CREATE EVENT CSS END */
 
@@ -657,6 +675,9 @@ input[type="password"]:focus {
     .card_events::-webkit-scrollbar-thumb {
         background: #222327;
     }
+}
+input {
+    background-color: #ff6f26;
 }
 
 /* MEDIA QUERY END*/

@@ -23,7 +23,7 @@
 
     <div class="profile_group_label">
         <label class="profile_text" for="event_date">Date</label>
-        <input type="date" id="event_date" wire:model="event_date" class="input">
+        <input type="date" id="event_date" wire:model="event_date" class="input date_e">
     </div>
 
     <div class="profile_group_label">
