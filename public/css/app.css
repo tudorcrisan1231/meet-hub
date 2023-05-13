@@ -350,6 +350,17 @@ input[type="password"]:focus {
     overflow: auto;
     padding-bottom: 4rem;
 }
+.card_events::-webkit-scrollbar {
+    width: 1rem;
+    height: 10px !important;
+}
+.card_events::-webkit-scrollbar-track {
+    background: #222327;
+}
+.card_events::-webkit-scrollbar-thumb {
+    background: var(--orange);
+    border-radius: 1rem;
+}
 .card-content {
     max-width: 95%;
     color: white;
@@ -498,6 +509,15 @@ input[type="password"]:focus {
     }
     .main_container_fluid {
         border-radius: 0 !important;
+    }
+    card_events::-webkit-scrollbar {
+        width: 0;
+    }
+    .card_events::-webkit-scrollbar-track {
+        background: #222327;
+    }
+    .card_events::-webkit-scrollbar-thumb {
+        background: #222327;
     }
 }
 
