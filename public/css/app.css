@@ -201,6 +201,7 @@ input[type="text"]:hover {
 input[type="password"]:hover {
     border: 1px solid var(--orange);
     transition: 1s ease;
+    width: 100% !important;
 }
 input[type="text"]:focus {
     outline: 1px solid var(--orange) !important;
@@ -479,6 +480,11 @@ input[type="password"]:focus {
     backdrop-filter: blur(20px);
     cursor: pointer;
 }
+.card_chats {
+    max-width: 440px;
+    margin-left: 35.2%;
+    margin-bottom: 1rem;
+}
 .div_location {
     width: 100%;
     display: flex;
@@ -679,6 +685,10 @@ input[type="password"]:focus {
     }
     .card_events::-webkit-scrollbar-thumb {
         background: #222327;
+    }
+    .card_chats {
+        max-width: 440px;
+        margin-bottom: 1rem;
     }
 }
 
