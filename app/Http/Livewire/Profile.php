@@ -9,8 +9,8 @@ use Livewire\WithFileUploads;
 class Profile extends Component
 {
     use WithFileUploads;
-    public $profile_img,  $profile_name, $profile_phone, $profile_birthday, $profile_gender, $profile_address, $profile_about, $current_img;
-
+    public $profile_img,  $profile_name, $profile_phone, $profile_birthday, $profile_gender, $profile_address, $profile_about, $current_img, $profile_hobbies;
+    public $view = 0; //0 = my profile, 1 = other profile
     public function saveProfile(){
         $user = User::find(auth()->user()->id);
         if($this->profile_img){
@@ -29,7 +29,14 @@ class Profile extends Component
     }
 
     public function boot(){
-        $user = User::find(auth()->user()->id);
+        if(isset($_GET['user']) && $_GET['user'] != auth()->user()->id){
+            $user = User::find($_GET['user']);
+            $this->view = 1;
+        } else {
+            $user = User::find(auth()->user()->id);
+            $this->view = 0;
+        }
+        
         $this->current_img = $user->photo;
         $this->profile_name = $user->name;
         $this->profile_phone = $user->phone;

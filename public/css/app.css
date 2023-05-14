@@ -173,7 +173,7 @@ body {
     background-color: var(--bg-color);
     /* margin: 20px; */
     margin-top: 10px;
-    width: 90% !important;
+    width: 100% !important;
     color: white;
     /* border: 2px solid white; */
     height: 4.7vh;
@@ -533,6 +533,8 @@ input[type="password"]:focus {
     background-color: #222327;
     border-radius: 5px;
     color: white;
+    font-size: 1.4rem;
+    text-align: center;
 }
 .leaflet-popup-tip {
     background-color: #222327 !important;

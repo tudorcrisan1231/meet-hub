@@ -40,7 +40,7 @@
         <div class="info_event">Organizator: 
             <div class="participanti">
                 
-                <a href="/profile" class="participanti_item">
+                <a href="/profile?user={{$organizator->id}}" class="participanti_item">
                     @isset($organizator->photo)
                         <img class="img_banner_prof" src="{{asset('storage/'.$organizator->photo)}}" alt="">
                     @else
@@ -56,7 +56,7 @@
         <div class="info_event">Participanti: 
             <div class="participanti">
                 @foreach ($participants as $participant)
-                    <a href="/profile" class="participanti_item">
+                    <a href="/profile?user={{$participant->id}}" class="participanti_item">
                         @isset($participant->photo)
                            <img class="img_part" src="{{asset('storage/'.$participant->photo)}}" alt="">
                         @else

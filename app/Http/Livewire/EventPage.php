@@ -45,12 +45,21 @@ class EventPage extends Component
     }
 
     public function unparticipate(){
+
+
         $event = Event::find($this->event_id);
-        $users = json_decode($event->users);
-        $users = array_diff($users, [auth()->user()->id]);
-        $event->users = json_encode($users);
-        $event->save();
-        return redirect()->to('/event/'.$this->event_id);
+
+        if($this->event->organizer == auth()->user()->id){
+            $event->status = 2;
+            $event->save();
+            return redirect()->to('/');
+        } else {
+            $users = json_decode($event->users);
+            $users = array_diff($users, [auth()->user()->id]);
+            $event->users = json_encode($users);
+            $event->save();
+            return redirect()->to('/event/'.$this->event_id);
+        }
     }
 
 
