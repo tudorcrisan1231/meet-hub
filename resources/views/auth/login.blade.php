@@ -27,8 +27,9 @@
                                 <div class="checkbox">
                                 
                                     <label>
-                                        <input type="checkbox" class="check" name="remember"> Remember Me
+                                        <input type="checkbox" class="check" name="remember">
                                     </label>
+                                        Remember me
                                     <div class="d-grid mx-auto">
                                 
                             </div>

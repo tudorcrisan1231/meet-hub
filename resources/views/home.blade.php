@@ -75,13 +75,13 @@
         border-bottom: 1px solid #ccc;
     }
     .search_container input{
+        width: 90% !important;
         padding: 1rem;
         font-size: 1.4rem;
         font-family: inherit;
         border-radius: .5rem;
         outline: none;
         border: 1px solid #ccc;
-        width: 95% !important;
         margin: 1rem auto;
         display: flex;
         align-items: center;
