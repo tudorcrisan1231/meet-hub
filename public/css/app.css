@@ -227,7 +227,6 @@ input[type="password"]:focus {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    text-indent: 2.5rem;
     color: white;
     margin-top: 4vh;
     font-size: 1.7rem;
@@ -259,10 +258,12 @@ input[type="password"]:focus {
     width: auto;
     display: flex;
     color: white;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-top: 4.5vh;
     font-size: 1.7rem;
+    width: 90%;
+    margin: 2rem auto;
 }
 .Terms {
     color: gray;
@@ -481,9 +482,7 @@ input[type="password"]:focus {
     cursor: pointer;
 }
 .card_chats {
-    max-width: 440px;
-    margin-left: 35.2%;
-    margin-bottom: 1rem;
+ 
 }
 .div_location {
     width: 100%;
@@ -510,13 +509,13 @@ input[type="password"]:focus {
 }
 /*NAVBAR*/
 .sidebar {
-    position: fixed;
+    position: absolute;
     background-color: white;
     top: 0;
     left: -100%;
     width: 40%;
     height: 100%;
-    z-index: 999;
+    z-index: 9999;
 
     display: flex;
     flex-direction: column;

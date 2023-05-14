@@ -21,7 +21,12 @@ class HomeController extends Controller
             }
            
             $this->user = User::find(auth()->user()->id);
-            $user_hobbies = json_decode($this->user->hobbies);
+            if($this->user->hobbies){
+                $user_hobbies = json_decode($this->user->hobbies);
+            } else {
+                $user_hobbies = [];
+            }
+            
 
             //get all events that match user's hobbies
             $this->events = Event::where(function($query) use ($user_hobbies){

@@ -29,7 +29,7 @@
         </div>
         <div class="card_btns">
             <div class="card_btns_btn button_login_register card_btns_open"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M4 18q-.425 0-.713-.288T3 17q0-.425.288-.713T4 16h16q.425 0 .713.288T21 17q0 .425-.288.713T20 18H4Zm0-5q-.425 0-.713-.288T3 12q0-.425.288-.713T4 11h16q.425 0 .713.288T21 12q0 .425-.288.713T20 13H4Zm0-5q-.425 0-.713-.288T3 7q0-.425.288-.713T4 6h16q.425 0 .713.288T21 7q0 .425-.288.713T20 8H4Z"/></svg></div>
-            <div class="card_btns_btn button_login_register">Events</div>
+            <a href="{{route('my_events')}}" class="card_btns_btn button_login_register">My Events</a>
             <a href="{{route('add_event')}}" class="card_btns_btn button_login_register">Create</a>
         </div>
     </div>
@@ -41,6 +41,7 @@
         <div class="sidebar_links">
             <a href="{{route('profile')}}">My profile</a>
             <a href="{{route('my_events')}}">My events</a>
+            <a href="/my-events?joined=1">Joined events</a>
         </div>
  
         <div class="sidebar_close">

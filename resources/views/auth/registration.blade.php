@@ -8,7 +8,7 @@
                 <div class="card">
                     <h3 class="register-login-title">Register User</h3>
                     <div class="form-login">
-                        <form action="{{ route('register.custom') }}" method="POST">
+                        <form action="{{ route('register.custom') }}" method="POST" style="width: 90%">
                             @csrf
                             <div class="form-group mb-3">
                                 <input type="text" placeholder="Name" id="name" class="input" name="name"
@@ -32,14 +32,11 @@
                                 @endif
                             </div>
                             <div class="form-group mb-3">
-                                <div class="checkbox">
-                                
-                                    <label>
-                                        <input type="checkbox" class="check" name="remember"> Remember Me
+                                <div class="checkbox" style="gap:.5rem;">
+                                    <input type="checkbox" class="check" name="remember" id="checkbox" style="width:max-content !important;">
+                                    <label for="checkbox">
+                                         Remember Me
                                     </label>
-                                    <div class="d-grid mx-auto">
-                                
-                            </div>
                                 </div>
                                 <button type="submit" class="button_login_register">SignUp</button>
                             </div>

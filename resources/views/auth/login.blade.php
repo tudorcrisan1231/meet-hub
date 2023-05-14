@@ -8,7 +8,7 @@
                 <div class="card">
                     <h3 class="register-login-title">Welcome 😄</h3>
                     <div class="form-login">
-                        <form method="POST" action="{{ route('login.custom') }}">
+                        <form method="POST" action="{{ route('login.custom') }}" style="width: 90%">
                             @csrf
                             <div class="form-group mb-3">
                                 <input  type="text" placeholder="Email" id="email" class="input" name="email" required
@@ -24,15 +24,11 @@
                                 @endif
                             </div>
                             <div class="form-group mb-3">
-                                <div class="checkbox">
+                                <div class="checkbox" style="gap:.5rem;">
                                 
-                                    <label>
-                                        <input type="checkbox" class="check" name="remember">
-                                    </label>
-                                        Remember me
-                                    <div class="d-grid mx-auto">
-                                
-                            </div>
+                                    <input type="checkbox" class="check" id="checkbox" name="remember" style="width:max-content !important;">
+                                    <label for="checkbox">Remember me</label>  
+                                    
                                 </div>
                                 <button type="submit" class="button_login_register">Login</button>
                             </div>
