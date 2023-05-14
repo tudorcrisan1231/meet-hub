@@ -12,6 +12,10 @@
         <input type="text" id="event_name" wire:model="event_name" class="input">
     </div>
 
+    
+    <label class="profile_text" style="margin-top:4rem;">Selecteaza locatia</label>
+    <div id="map" style="height: 50rem; width:100%"></div>
+
     <div class="profile_group_label">
         <label class="profile_text" for="profile_about">Event Description</label>
         <textarea name="" id="profile_about" cols="30" rows="10" wire:model="event_description" class="input select"></textarea>
@@ -46,11 +50,9 @@
         <input type="file" id="event_img" wire:model="event_img" class="input">
     </div>
 
-    <label class="profile_text">Selecteaza locatia</label>
-    <div id="map" style="height: 50rem; width:100%"></div>
 
 
-    <div class="button_login_register" wire:click="addEvent">
+    <div class="button_login_register" wire:click="addEvent" style="width: 95%;">
         Adauga event
     </div>
 
