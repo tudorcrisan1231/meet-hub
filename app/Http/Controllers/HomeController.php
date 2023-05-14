@@ -19,9 +19,26 @@ class HomeController extends Controller
                 $event->location = json_encode([$_COOKIE['lat'], $_COOKIE['lng']]);
                 $event->save();
             }
-
-            $this->events = Event::all();
+           
             $this->user = User::find(auth()->user()->id);
+            $user_hobbies = json_decode($this->user->hobbies);
+
+            //get all events that match user's hobbies
+            $this->events = Event::where(function($query) use ($user_hobbies){
+                foreach($user_hobbies as $hobby){
+                    $query->orWhere('type', 'like', '%'.$hobby.'%');
+                }
+            })->get();
+
+            //then merge in all events the rest of the events
+            $this->events = $this->events->merge(Event::where(function($query) use ($user_hobbies){
+                foreach($user_hobbies as $hobby){
+                    $query->orWhere('type', 'not like', '%'.$hobby.'%');
+                }
+            })->get());
+
+            // dd($this->events);
+
             return view('home', ['user' => $this->user, 'events' => $this->events]);
         } else {
             return redirect()->to('login')->with('error','You must login first.');
