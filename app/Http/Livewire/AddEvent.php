@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
+use App\Models\Theme;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -11,7 +12,7 @@ class AddEvent extends Component
     use WithFileUploads;
 
     public $event_img, $event_name, $event_date, $event_time, $event_location, $event_description, $event_limit, $event_theme;
-
+    public $themes;
     public function addEvent()
     {
         $event = new Event;
@@ -41,10 +42,16 @@ class AddEvent extends Component
         return redirect()->to('/?add-event-success='.$event->id);
     }
 
+    public function mount(){
+        $this->themes = Theme::all();
+        $this->event_theme = $this->themes[0]->name;
+    }
+
     public function render()
     {
         //rerender the js from component
         $this->emit('js');
+
         return view('livewire.add-event');
     }
 }

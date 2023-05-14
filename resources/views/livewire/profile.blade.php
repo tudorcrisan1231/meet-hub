@@ -42,10 +42,30 @@
     <div class="profile_group_label">
         @if($view == 0)
             <label class="profile_text" for="profile_hobbies">Actualizeaza hobbies</label>
-            <input type="text" id="profile_hobbies" wire:model="profile_hobbies" class="input">
+            <select name="" id="profile_hobbies" wire:model="profile_hobbies" class="input" multiple style="height: 100px;">
+                {{-- check if profile_hobbies exist in $themes --}}
+                @foreach ($themes as $theme)
+                    <option value="{{$theme->name}}">{{$theme->name}}</option>
+                @endforeach
+            </select>
+
+            @if($existing_hobbies)
+                <div style="display: flex; flex-wrap: wrap; gap:.5rem;">
+                    <b class="profile_text">Hobbies:</b>
+                    @foreach (json_decode($existing_hobbies) as $hobbie)
+                        <p class="profile_text">{{$hobbie}},</p>
+                    @endforeach
+                </div>
+            @endif
         @else
-            <label class="profile_text" for="profile_hobbies">Hobbies</label>
-            <input type="text" id="profile_hobbies" wire:model="profile_hobbies" class="input" disabled>
+            @if($existing_hobbies)
+                <div style="display: flex; flex-wrap: wrap; gap:.5rem;">
+                    <b class="profile_text">Hobbies:</b>
+                    @foreach (json_decode($existing_hobbies) as $hobbie)
+                        <p class="profile_text">{{$hobbie}},</p>
+                    @endforeach
+                </div>
+            @endif
         @endif
     </div>
 

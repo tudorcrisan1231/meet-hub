@@ -18,7 +18,11 @@
     </div>
     <div class="profile_group_label">
         <label class="profile_text" for="event_theme">Theme</label>
-        <input type="text" id="event_theme" wire:model="event_theme" class="input">
+        <select name="" id="event_theme" wire:model="event_theme" class="input">
+            @foreach ($themes as $theme)
+                <option value="{{$theme->name}}">{{$theme->name}}</option>
+            @endforeach
+        </select>
     </div>
 
     <div class="profile_group_label">

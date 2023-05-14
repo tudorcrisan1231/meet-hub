@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Theme;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -9,8 +10,9 @@ use Livewire\WithFileUploads;
 class Profile extends Component
 {
     use WithFileUploads;
-    public $profile_img,  $profile_name, $profile_phone, $profile_birthday, $profile_gender, $profile_address, $profile_about, $current_img, $profile_hobbies;
+    public $profile_img,  $profile_name, $profile_phone, $profile_birthday, $profile_gender, $profile_address, $profile_about, $current_img, $profile_hobbies=[], $existing_hobbies=[];
     public $view = 0; //0 = my profile, 1 = other profile
+    public $themes;
     public function saveProfile(){
         $user = User::find(auth()->user()->id);
         if($this->profile_img){
@@ -22,13 +24,14 @@ class Profile extends Component
         $user->gender = $this->profile_gender;
         $user->address = $this->profile_address;
         $user->about = $this->profile_about;
+        $user->hobbies = $this->profile_hobbies;
 
         $user->save();
 
         return redirect()->to('/');
     }
 
-    public function boot(){
+    public function mount(){
         if(isset($_GET['user']) && $_GET['user'] != auth()->user()->id){
             $user = User::find($_GET['user']);
             $this->view = 1;
@@ -44,6 +47,10 @@ class Profile extends Component
         $this->profile_gender = $user->gender;
         $this->profile_address = $user->address;
         $this->profile_about = $user->about;
+        $this->existing_hobbies = $user->hobbies;
+
+        $this->themes = Theme::all();
+
     }
 
     public function render()
